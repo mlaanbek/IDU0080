@@ -1,0 +1,19 @@
+CREATE TABLE wash_inputs (
+	input_id varchar(255) PRIMARY KEY,
+	input_name varchar(255) NOT NULL,
+	input_type varchar(255) NOT NULL,
+	input_price float(10,2) NOT NULL,
+	input_make varchar(255)
+);
+
+INSERT INTO wash_inputs (input_id, input_name,input_type, input_price, input_make)
+VALUES ('SPO1','Pesukäsn','puhastusvahend',0.89, 'Wileda');
+
+INSERT INTO wash_inputs (input_id, input_name,input_type, input_price, input_make)
+VALUES ('SHO1','Laste šhampoon','vedelik',2.89, 'Loreal');
+
+INSERT INTO wash_inputs (input_id, input_name,input_type, input_price, input_make)
+VALUES ('SHO2','Nõgese šhampoon','vedelik',4.89, 'Flora');
+
+INSERT INTO wash_inputs (input_id, input_name,input_type, input_price, input_make)
+VALUES ('HARI1','Pesuhari','puhastusvahend',0.39, 'FIE Enn Maasikas');
