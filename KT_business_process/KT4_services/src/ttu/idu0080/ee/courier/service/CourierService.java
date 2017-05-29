@@ -95,7 +95,6 @@ public class CourierService implements ICourierService, CourierWebService {
 		courier2.setPercentFromOrder(15);
 		List<Address> courier2Addresses = new ArrayList<Address>();
 
-		courier2Addresses.add(address1);
 		courier2Addresses.add(address2);
 		courier2Addresses.add(address3);
 		courier2Addresses.add(address4);
@@ -121,7 +120,6 @@ public class CourierService implements ICourierService, CourierWebService {
 		courier4.setPercentFromOrder(5);
 		List<Address> courier4Addresses = new ArrayList<Address>();
 
-		courier4Addresses.add(address1);
 		courier4Addresses.add(address2);
 		courier4Addresses.add(address5);
 		courier4.setAddresses(courier4Addresses);

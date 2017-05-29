@@ -64,9 +64,10 @@ public class OfferService implements IOfferService {
 		for (Address courierAddress: courier.getAddresses()) {
 			if (courierAddress.getCounty().equals(order.getShippingAddress().getCounty())) {
 				transportDiscount += 30;
-				logText += "\nShipping address langeb kokku kullerfirma aadressiga\nOffer discount: [30]";
+				logText += "\nShipping address langeb kokku kullerfirma aadressiga";
 				break;
 			}
+			
 		}
 		
 		
@@ -79,6 +80,7 @@ public class OfferService implements IOfferService {
 				}
 			}
 		}
+		logText += "\nOffer discount: [" + transportDiscount + "]";
 		
 		
 		// calculate transport offer price
@@ -96,7 +98,7 @@ public class OfferService implements IOfferService {
 		
 		logText += "\noffer: offer_id: [" + offer.getOfferId() + "] offer price: [" + offer.getTransportPrice() 
 				+ "] approx. delivery date: [" + approxDeliveryDateTxt 
-				+ "]\nOfferService ends\n-----------------------";
+				+ "]\nOfferService ends\n-----------------------\n\n";
 		
 		LOG.info(logText);
 		
