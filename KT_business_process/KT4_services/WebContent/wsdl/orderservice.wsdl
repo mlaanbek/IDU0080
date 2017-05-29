@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="OrderServiceService" targetNamespace="http://service.order.ee.idu0080.ttu/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.order.ee.idu0080.ttu/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://service.order.ee.idu0080.ttu/" schemaLocation="orderservice_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="getOrderById">
+    <wsdl:part name="parameters" element="tns:getOrderById">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getOrderByIdResponse">
+    <wsdl:part name="parameters" element="tns:getOrderByIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="OrderWebService">
+    <wsdl:operation name="getOrderById">
+      <wsdl:input name="getOrderById" message="tns:getOrderById">
+    </wsdl:input>
+      <wsdl:output name="getOrderByIdResponse" message="tns:getOrderByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OrderServiceServiceSoapBinding" type="tns:OrderWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getOrderById">
+      <soap:operation soapAction="urn:GetOrderById" style="document"/>
+      <wsdl:input name="getOrderById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getOrderByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OrderServiceService">
+    <wsdl:port name="OrderServicePort" binding="tns:OrderServiceServiceSoapBinding">
+      <soap:address location="http://localhost:9090/OrderServicePort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

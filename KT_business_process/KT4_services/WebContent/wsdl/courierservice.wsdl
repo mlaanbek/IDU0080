@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="CourierServiceService" targetNamespace="http://service.courier.ee.idu0080.ttu/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.courier.ee.idu0080.ttu/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:tns="http://service.courier.ee.idu0080.ttu/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://service.courier.ee.idu0080.ttu/" version="1.0">
+
+  <xs:element name="getAllCouriers" type="tns:getAllCouriers"/>
+
+  <xs:element name="getAllCouriersResponse" type="tns:getAllCouriersResponse"/>
+
+  <xs:element name="getCourierById" type="tns:getCourierById"/>
+
+  <xs:element name="getCourierByIdResponse" type="tns:getCourierByIdResponse"/>
+
+  <xs:complexType name="getAllCouriers">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllCouriersResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:courier"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="courier">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="addresses" nillable="true" type="tns:address"/>
+      <xs:element name="courierId" type="xs:int"/>
+      <xs:element minOccurs="0" name="courierName" type="xs:string"/>
+      <xs:element name="percentFromOrder" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="address">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="country" type="xs:string"/>
+      <xs:element minOccurs="0" name="county" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCourierById">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCourierByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:courier"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getAllCouriers">
+    <wsdl:part name="parameters" element="tns:getAllCouriers">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCourierById">
+    <wsdl:part name="parameters" element="tns:getCourierById">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCouriersResponse">
+    <wsdl:part name="parameters" element="tns:getAllCouriersResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCourierByIdResponse">
+    <wsdl:part name="parameters" element="tns:getCourierByIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CourierWebService">
+    <wsdl:operation name="getAllCouriers">
+      <wsdl:input name="getAllCouriers" message="tns:getAllCouriers">
+    </wsdl:input>
+      <wsdl:output name="getAllCouriersResponse" message="tns:getAllCouriersResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourierById">
+      <wsdl:input name="getCourierById" message="tns:getCourierById">
+    </wsdl:input>
+      <wsdl:output name="getCourierByIdResponse" message="tns:getCourierByIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CourierServiceServiceSoapBinding" type="tns:CourierWebService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAllCouriers">
+      <soap:operation soapAction="urn:GetAllCouriers" style="document"/>
+      <wsdl:input name="getAllCouriers">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllCouriersResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCourierById">
+      <soap:operation soapAction="urn:GetCourierById" style="document"/>
+      <wsdl:input name="getCourierById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCourierByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CourierServiceService">
+    <wsdl:port name="CourierServicePort" binding="tns:CourierServiceServiceSoapBinding">
+      <soap:address location="http://localhost:9090/CourierServicePort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

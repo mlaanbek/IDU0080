@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?><xs:schema xmlns:tns="http://service.order.ee.idu0080.ttu/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://service.order.ee.idu0080.ttu/" version="1.0">
+<xs:element name="getOrderById" type="tns:getOrderById"/>
+<xs:element name="getOrderByIdResponse" type="tns:getOrderByIdResponse"/>
+<xs:complexType name="getOrderById">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getOrderByIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:order"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="order">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="customer" type="tns:customer"/>
+      <xs:element name="orderId" type="xs:int"/>
+      <xs:element name="priceTotal" type="xs:float"/>
+      <xs:element minOccurs="0" name="seller" type="tns:seller"/>
+      <xs:element minOccurs="0" name="shippingAddress" type="tns:address"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="customer">
+    <xs:sequence>
+      <xs:element name="customerId" type="xs:int"/>
+      <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+      <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="seller">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="addresses" nillable="true" type="tns:address"/>
+      <xs:element name="sellerId" type="xs:int"/>
+      <xs:element minOccurs="0" name="sellerName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="address">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="country" type="xs:string"/>
+      <xs:element minOccurs="0" name="county" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="orderedProduct">
+    <xs:sequence>
+      <xs:element name="price" type="xs:float"/>
+      <xs:element name="priceTotal" type="xs:float"/>
+      <xs:element name="productCount" type="xs:int"/>
+      <xs:element name="productId" type="xs:int"/>
+      <xs:element minOccurs="0" name="productName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
